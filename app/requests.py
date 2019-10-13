@@ -55,46 +55,46 @@ def process_news(news_list):
 
     return movie_results
 
-# def get_articles(category):
-#     '''
-#     Function that gets the json response to our url request
-#     '''
-#     get_news_url = base_url.format(category,api_key)
+def get_articles(category):
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_articles_url = base_url.format(category,api_key)
 
-#     with urllib.request.urlopen(get_movies_url) as url:
-#         get_news_data = url.read()
-#         get_news_response = json.loads(get_news_data)
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
 
-#         news_results = None
+        articles_results = None
 
-#         if get_news_response['news']:
-#             news_results_list = get_news_response['news']
-#             news_results = process_news(news_results_list)
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
 
 
-#     return news_results
+    return articles_results
 
-# def process_news(news_list):
-#     '''
-#     Function  that processes the news result and transform them to a list of Objects
+def process_articles(articles_list):
+    '''
+    Function  that processes the articles result and transform them to a list of Objects
 
-#     Args:
-#         news_list: A list of dictionaries that contain news details
+    Args:
+        articles_list: A list of dictionaries that contain articles details
 
-#     Returns :
-#         news_results: A list of movie objects
-#     '''
-#     news_results = []
-#     for news_item in news_list:
-#         id = news_item.get('id')
-#         description = news_item.get('description')
-# 		url = news_item.get('url')
-# 		category = news_item.get('category')
-# 		language = news_item.get('language')
-# 		country = news_item.get('country')
+    Returns :
+        articles_results: A list of movie objects
+    '''
+    articles_results = []
+    for news_item in news_list:
+        id = news_item.get('id')
+        description = news_item.get('description')
+		url = news_item.get('url')
+		category = news_item.get('category')
+		language = news_item.get('language')
+		country = news_item.get('country')
 
-#             news_object = News(id,title,description,url,category,country,language)
-#             news_results.append(news_object)
+            news_object = News(id,title,description,url,category,country,language)
+            news_results.append(news_object)
 
-#     return movie_results
+    return movie_results
 
