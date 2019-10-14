@@ -33,37 +33,38 @@
 
 {% endmacro %}
 
-<!-- SCIENCE -->
-{% macro displayNewsList(news_list) %}
+{% macro displayScienceList(news_list) %}
 
-{% for news_row in news_list |batch(4)%}
-<div class="row">
-
-{% for news in news_row %}
-{%if news.category == 'science'%}
-<div class="col-md-3">
-    
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a href="/news/{{news.id}}">
-                {{ news.title}}
-            </a>
-        </div>
-        <div class="panel-body">
-            <p>
-                {{ news.description |truncate(100)}}
-
-            </p>
-            <a href="/news/{{news.id}}" class="btn btn-info btn-sm">Visit {{news.name}}</a>
-        </div>
+	{% for news_row in news_list |batch(4)%}
+        <div class="row">
         
+            
+        {% for news in news_row %}
+        {%if news.category == 'science'%}
+            <div class="col-md-3">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a href="/news/{{news.id}}">
+                            {{ news.title}}
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            {{ news.description |truncate(100)}}
 
+                        </p>
+                        <a href="/news/{{news.id}}" class="btn btn-info btn-sm">Visit {{news.name}}</a>
+                    </div>
+                    
+    
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+            
     </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-
-</div>
 {% endfor %}
 
 {% endmacro %}
+

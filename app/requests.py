@@ -13,7 +13,7 @@ articles_url = app.config['ARTICLES_BASE_URL']
 base_url = app.config["NEWS_API_BASE_URL"]
 
 
-def get_news():
+def get_news(category):
     '''
     Function that gets the json response to our url request
     '''
