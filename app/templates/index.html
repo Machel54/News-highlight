@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best Movie Review website </title>
-        {% endif %}
-    </head>
-    <body>
+{% import 'macros.html' as macro %}
 
-    </body>
-</html>
+{% block content%}
+<div class="container-fluid">
+        <!-- General News Section  -->
+        <h3> Top General News</h3>
+        <hr>
+
+        {{ macro.displayNewsList(sources)}}
+
+        
+
+	
+</div>
+{%endblock%}
