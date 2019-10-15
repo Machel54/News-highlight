@@ -2,7 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap 
 from config import config_options
 
-bootstrap = Bootstrap
+bootstrap = Bootstrap()
 
 def create_app(config_name):
     
@@ -15,5 +15,8 @@ def create_app(config_name):
     # setting config
     from .requests import configure_request
     configure_request(app)
+
+    # Initializing flask extensions
+    bootstrap.init_app(app)
 
     return app

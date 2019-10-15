@@ -1,10 +1,9 @@
-from app import app
 import urllib.request,json
 from .models import News,Articles
 from datetime import datetime
 
-News = news.News
-Articles = news.Articles
+# News = news.News
+# Articles = news.Articles
 
 #getting the api key
 api_key = None
@@ -18,9 +17,9 @@ articles_url = None
 def configure_request(app):
 
 	global api_key,base_url,articles_url
-	api_key = app.config['API_KEY']
-	base_url = app.config['NEWS_BASE_URL']
-	articles_url = app.config['ARTICLES_BASE_URL']
+	# api_key = app.conf/ig['NEWS_API_KEY']
+	base_url = 'https://newsapi.org/v2/sources?apiKey=a63377ab71ed40e0b9ed31f548300b72'
+	articles_url = 'https://newsapi.org/v2/everything?sources={}&apiKey=a63377ab71ed40e0b9ed31f548300b72'
 
 
 
@@ -73,7 +72,7 @@ def get_articles(id):
     '''
     Function that processes the articles and returns a list of articles objects
 	'''
-    get_articles_url = articles_url.format(id,api_key)
+    get_articles_url = articles_url.format(id)
 
     with urllib.request.urlopen(get_articles_url) as url:
         articles_results = json.loads(url.read())
