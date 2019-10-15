@@ -249,6 +249,39 @@
 
 {% endmacro %}
 
+{% macro displayArticlesList(articles_list) %}
+
+	{% for articles_row in articles_list |batch(4)%}
+        <div class="row">
+        
+            
+        {% for articles in articles_row %}
+            <div class="col-md-3">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading-default">
+                        <a href="/articles/{{articles.id}}">
+                            {{ articles.name}}
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            {{ articles.description |truncate(100)}}
+
+                        </p>
+                        <a href="/articles/{{articles.id}}" class="btn btn-info btn-sm">Visit {{articles.name}}</a>
+                    </div>
+                    
+    
+                </div>
+            </div>
+        {% endfor %}
+            
+    </div>
+{% endfor %}
+
+{% endmacro %}
+
 
 
 

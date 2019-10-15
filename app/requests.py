@@ -4,6 +4,7 @@ from .models import news
 from datetime import datetime
 
 News = news.News
+Articles = news.Articles
 
 #Getting api key
 api_key = app.config['NEWS_API_KEY']
@@ -68,24 +69,31 @@ def get_articles(id):
         articles_results = json.loads(url.read())
         articles_object = None
 
-        if get_articles['articles']:
-            articles_object = process_results(articles_results['articles'])
+        if articles_results['articles']:
+            articles_object = process_articles(articles_results['articles'])
 
     return articles_object
 
 def process_articles(articles_list):
-  
-	articles_object = []
-	for article_item in articles_list:
-		id = article_item.get('id')
-		author = article_item.get('author')
-		title = article_item.get('title')
-		description = article_item.get('description')
-		url = article_item.get('url')
-		image = article_item.get('urlToImage')
-		date = article_item.get('publishedAt')
-		
-		if image:
-			articles_result = Articles(id,author,title,description,url,image,date)
-			articles_object.append(articles_result)	
+    
+    articles_object = []
 
+    for article_item in articles_list:
+
+
+        id = article_item.get('id')
+        author = article_item.get('author')
+        title = article_item.get('title')
+        description = article_item.get('description')
+        url = article_item.get('url')
+        image = article_item.get('urlToImage')
+        date = article_item.get('publishedAt')
+    
+    
+    if image:
+        articles_result = Articles(id,author,title,description,url,image,date)
+        articles_object.append(articles_result) 
+    return articles_object
+   
+
+    
